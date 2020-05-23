@@ -1,0 +1,6 @@
+# Rust Tricks
+
+
+## License
+
+MIT
