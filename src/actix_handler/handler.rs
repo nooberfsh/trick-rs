@@ -35,8 +35,8 @@ impl_handler!(A, B, C, D, E, F);
 impl_handler!(A, B, C, D, E, F, G);
 impl_handler!(A, B, C, D, E, F, G, H);
 
-pub fn handle<P: FromRequest, F: Handler<P>>(req: Request, f: F) -> Response {
-    let p = P::from_req(&req);
+pub fn handle<P: FromRequest, F: Handler<P>>(req: &Request, f: F) -> Response {
+    let p = P::from_req(req);
     f.call(p)
 }
 
@@ -62,7 +62,7 @@ mod tests {
 
     #[test]
     fn test_handle() {
-        let req = Request;
+        let req = &Request;
         handle(req, f0);
         handle(req, f1);
         handle(req, f2);
